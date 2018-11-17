@@ -1,0 +1,34 @@
+version: "3.0"
+
+services:
+
+    onedrive1:
+        build:
+            context: build
+        image: loblab/onedrive
+        hostname: onedrive1
+        container_name: onedrive1
+        restart: always
+        environment:
+            - DEBUG=false
+            - MODE=download
+        volumes:
+            - ./onedrive1:/config
+            - ./sync_list:/config/sync_list
+            - ./data/onedrive1:/documents
+
+    onedrive2:
+        build:
+            context: build
+        image: loblab/onedrive
+        hostname: onedrive2
+        container_name: onedrive2
+        restart: always
+        environment:
+            - DEBUG=false
+            - MODE=download
+        volumes:
+            - ./onedrive2:/config
+            - ./sync_list:/config/sync_list
+            - ./data/onedrive2:/documents
+
